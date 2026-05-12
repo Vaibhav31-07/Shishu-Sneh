@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.ShishuSneh" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#F48FB1</item>
+        <item name="colorPrimaryVariant">#F06292</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#A5D6A7</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+    </style>
+</resources>
