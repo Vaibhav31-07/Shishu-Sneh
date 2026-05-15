@@ -10,6 +10,7 @@ import com.example.shishusneh.ui.feeding.FeedingGuideActivity
 import com.example.shishusneh.ui.growth.GrowthChartActivity
 import com.example.shishusneh.ui.milestone.MilestoneActivity
 import com.example.shishusneh.ui.onboarding.OnboardingActivity
+import com.example.shishusneh.ui.report.BabyReportActivity
 import com.example.shishusneh.ui.vaccination.VaccinationActivity
 import com.example.shishusneh.utils.DateUtils
 import kotlinx.coroutines.launch
@@ -18,6 +19,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var db: AppDatabase
+    private var currentBabyId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +31,7 @@ class HomeActivity : AppCompatActivity() {
         lifecycleScope.launch {
             db.babyDao().getBaby().collect { baby ->
                 if (baby != null) {
+                    currentBabyId = baby.id
                     binding.tvWelcome.text = "Hello, ${baby.name}! 👶"
                     val days = DateUtils.daysBetween(baby.dateOfBirth, DateUtils.today())
                     val months = days / 30
@@ -53,9 +56,26 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, MilestoneActivity::class.java))
         }
 
-        // Add a way to go back to onboarding (Profile/Edit)
-        binding.tvWelcome.setOnClickListener {
+        // Link the Professional Wellness Report button
+        binding.btnGenerateReport.setOnClickListener {
+            if (currentBabyId != -1) {
+                val intent = Intent(this, BabyReportActivity::class.java)
+                intent.putExtra("BABY_ID", currentBabyId)
+                startActivity(intent)
+            }
+        }
+
+        val openProfile = {
             startActivity(Intent(this, OnboardingActivity::class.java))
+        }
+        
+        binding.ivProfile.setOnClickListener { openProfile() }
+        binding.tvWelcome.setOnClickListener { openProfile() }
+
+        binding.ivAddBaby.setOnClickListener {
+            val intent = Intent(this, OnboardingActivity::class.java)
+            intent.putExtra("ADD_NEW_BABY", true)
+            startActivity(intent)
         }
     }
 }

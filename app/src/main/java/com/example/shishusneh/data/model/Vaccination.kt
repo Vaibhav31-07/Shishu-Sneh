@@ -11,5 +11,6 @@ data class Vaccination(
     val vaccineName: String,
     val scheduledDate: String,  // format: "dd-MM-yyyy"
     val isDone: Boolean = false,
-    val diseasePrevented: String
+    val diseasePrevented: String,
+    val description: String = ""
 )

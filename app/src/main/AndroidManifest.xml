@@ -28,6 +28,7 @@
         <activity android:name=".ui.vaccination.VaccinationActivity"/>
         <activity android:name=".ui.feeding.FeedingGuideActivity"/>
         <activity android:name=".ui.milestone.MilestoneActivity"/>
+        <activity android:name=".ui.report.BabyReportActivity"/>
 
     </application>
 

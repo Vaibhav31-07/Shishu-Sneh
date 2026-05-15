@@ -12,6 +12,7 @@ class VaccinationActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityVaccinationBinding
     private lateinit var db: AppDatabase
+    private var babyId: Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +20,7 @@ class VaccinationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         db = AppDatabase.getDatabase(this)
+        babyId = intent.getIntExtra("BABY_ID", -1)
 
         binding.btnBack.setOnClickListener { finish() }
 
@@ -31,9 +33,11 @@ class VaccinationActivity : AppCompatActivity() {
         binding.rvVaccinations.layoutManager = LinearLayoutManager(this)
         binding.rvVaccinations.adapter = adapter
 
-        lifecycleScope.launch {
-            db.vaccinationDao().getVaccinations(1).collect { list ->
-                adapter.submitList(list)
+        if (babyId != -1) {
+            lifecycleScope.launch {
+                db.vaccinationDao().getVaccinations(babyId).collect { list ->
+                    adapter.submitList(list)
+                }
             }
         }
     }

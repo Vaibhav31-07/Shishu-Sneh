@@ -1,96 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="#FFF8F9">
+    android:background="@drawable/bg_onboarding"
+    android:padding="24dp">
 
-    <ImageView
+    <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_gravity="start"
-        android:padding="12dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@android:drawable/ic_menu_revert"
-        android:contentDescription="Back"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#F06292"
+        tools:visibility="visible" />
 
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:src="@mipmap/ic_launcher_round"
-        android:layout_marginBottom="24dp"/>
+    <!-- Unique animated logo container -->
+    <FrameLayout
+        android:id="@+id/logoContainer"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBack">
+
+        <View
+            android:id="@+id/logoBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/baby_logo_bg" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="👶"
+            android:textSize="80sp" />
+    </FrameLayout>
 
     <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shishu Sneh"
-        android:textSize="32sp"
-        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:text="@string/onboarding_title"
         android:textColor="#F06292"
-        android:layout_marginBottom="8dp"/>
+        android:textSize="38sp"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        android:letterSpacing="-0.02"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoContainer" />
 
     <TextView
+        android:id="@+id/tvSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Baby's First Year Guide"
-        android:textSize="16sp"
+        android:text="@string/onboarding_subtitle"
         android:textColor="#888888"
-        android:layout_marginBottom="48dp"/>
+        android:textSize="18sp"
+        android:letterSpacing="0.05"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
-    <EditText
-        android:id="@+id/etBabyName"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/formCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Baby's Name"
-        android:inputType="textPersonName"
-        android:padding="12dp"
-        android:background="@drawable/rounded_edittext"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="#CCFFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
 
-    <EditText
-        android:id="@+id/etDOB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Date of Birth (dd-MM-yyyy)"
-        android:inputType="text"
-        android:padding="12dp"
-        android:background="@drawable/rounded_edittext"
-        android:layout_marginBottom="16dp"/>
-
-    <RadioGroup
-        android:id="@+id/rgGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="32dp">
-
-        <RadioButton
-            android:id="@+id/rbBoy"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Boy"
-            android:layout_marginEnd="16dp"/>
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <RadioButton
-            android:id="@+id/rbGirl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Girl"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilName"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/baby_name_hint"
+                app:boxStrokeColor="#F06292"
+                app:hintTextColor="#F06292"
+                app:startIconDrawable="@android:drawable/ic_menu_edit"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.ShishuSneh.MediumComponent">
 
-    </RadioGroup>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etBabyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDOB"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/dob_hint"
+                app:boxStrokeColor="#F06292"
+                app:hintTextColor="#F06292"
+                app:startIconDrawable="@android:drawable/ic_menu_today"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.ShishuSneh.MediumComponent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDOB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvGenderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/select_gender"
+                android:textColor="#333333"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rbBoy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:text="@string/boy"
+                    app:buttonTint="#F06292" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/rbGirl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/girl"
+                    app:buttonTint="#F06292" />
+            </RadioGroup>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStart"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start Journey 💕"
+        android:layout_height="64dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/start_journey"
         android:textSize="18sp"
+        android:textAllCaps="false"
+        app:cornerRadius="32dp"
         android:backgroundTint="#F06292"
-        android:textColor="#FFFFFF"
-        android:padding="14dp"
-        android:layout_marginBottom="16dp"/>
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

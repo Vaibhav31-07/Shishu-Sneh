@@ -17,11 +17,14 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        
+        buildConfigField("String", "GEMINI_API_KEY", "\"AIzaSyDcPD3iD_gqzOuzWWQfa8VXCkWfsTVck1Y\"")
     }
 
     buildFeatures {
         viewBinding = true
         compose = true
+        buildConfig = true
     }
 
     compileOptions {
@@ -49,6 +52,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.runtime:runtime")
+    implementation("androidx.compose.foundation:foundation")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
@@ -65,6 +70,9 @@ dependencies {
 
     // Gemini AI
     implementation(libs.generativeai)
+
+    // Lottie Animations
+    implementation(libs.lottie)
 
     // Lifecycle & ViewModel
     implementation(libs.androidx.lifecycle.viewmodel)

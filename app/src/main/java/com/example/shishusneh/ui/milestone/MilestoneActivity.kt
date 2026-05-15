@@ -1,11 +1,14 @@
 package com.example.shishusneh.ui.milestone
 
+import android.content.res.ColorStateList
 import android.os.Bundle
-import android.widget.CheckBox
-import android.widget.LinearLayout
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shishusneh.databinding.ActivityMilestoneBinding
+import com.example.shishusneh.databinding.ItemMilestoneCardBinding
+import com.google.android.material.checkbox.MaterialCheckBox
 
 class MilestoneActivity : AppCompatActivity() {
 
@@ -27,23 +30,27 @@ class MilestoneActivity : AppCompatActivity() {
 
         binding.btnBack.setOnClickListener { finish() }
 
-        milestones.forEach { (month, items) ->
-            val header = TextView(this).apply {
-                text = "📅 $month"
-                textSize = 18f
-                setTextColor(0xFFF06292.toInt())
-                setPadding(0, 24, 0, 8)
-            }
-            binding.llMilestones.addView(header)
+        val pinkColor = 0xFFF06292.toInt()
 
+        milestones.forEach { (month, items) ->
+            val cardBinding = ItemMilestoneCardBinding.inflate(layoutInflater, binding.llMilestones, false)
+            
+            cardBinding.tvMonthHeader.text = "📅 $month"
+            
             items.forEach { milestone ->
-                val checkBox = CheckBox(this).apply {
+                val checkBox = MaterialCheckBox(this).apply {
                     text = milestone
                     textSize = 15f
-                    buttonTintList = android.content.res.ColorStateList.valueOf(0xFFF06292.toInt())
+                    buttonTintList = ColorStateList.valueOf(pinkColor)
+                    layoutParams = ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
                 }
-                binding.llMilestones.addView(checkBox)
+                cardBinding.llMilestoneItems.addView(checkBox)
             }
+            
+            binding.llMilestones.addView(cardBinding.root)
         }
     }
 }

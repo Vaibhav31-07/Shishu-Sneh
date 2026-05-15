@@ -1,3 +1,43 @@
 <resources>
-    <string name="app_name">ShishuSneh</string>
+    <string name="app_name">Shishu Sneh</string>
+    <string name="welcome_baby">Hello, %1$s! 👶</string>
+    <string name="age_months">Age: %1$d months old</string>
+    <string name="explore">Explore</string>
+    <string name="growth">Growth</string>
+    <string name="vaccines">Vaccines</string>
+    <string name="feeding">Feeding</string>
+    <string name="milestones">Milestones</string>
+    <string name="daily_tip_label">Daily Tip 💡</string>
+    <string name="default_tip">Tummy time is important for your baby\'s development. Try to do it for a few minutes each day!</string>
+
+    <string name="onboarding_title">Shishu Sneh</string>
+    <string name="onboarding_subtitle">Your Baby\'s First Year Guide</string>
+    <string name="baby_name_hint">Baby\'s Name</string>
+    <string name="dob_hint">Date of Birth (dd-MM-yyyy)</string>
+    <string name="select_gender">Select Gender</string>
+    <string name="boy">Boy</string>
+    <string name="girl">Girl</string>
+    <string name="start_journey">Start Journey 💕</string>
+    <string name="update_profile">Update Profile</string>
+
+    <string name="growth_tracker">Growth Tracker</string>
+    <string name="monitor_growth">Monitor weight and height</string>
+    <string name="new_entry">New Entry</string>
+    <string name="weight_kg_hint">Weight (kg)</string>
+    <string name="height_cm_hint">Height (cm)</string>
+    <string name="save_entry">Save Entry</string>
+    <string name="recent_logs">Recent Logs</string>
+
+    <string name="vaccination_guide">Vaccination Guide</string>
+    <string name="vaccination_subtitle">Keep track of your baby\'s health</string>
+
+    <string name="feeding_guide">Feeding Guide</string>
+    <string name="feeding_subtitle">Nutrition tips for every stage</string>
+    <string name="current_recommendation">Current Recommendation 🥣</string>
+    <string name="ai_assistant">AI Feeding Assistant ✨</string>
+    <string name="ask_ai_hint">Ask anything about feeding...</string>
+    <string name="get_ai_advice">Get AI Advice 🤖</string>
+
+    <string name="milestones_title">Baby Milestones</string>
+    <string name="milestones_subtitle">Celebrate every little win!</string>
 </resources>

@@ -1,9 +1,28 @@
 <resources>
-    <style name="Theme.ShishuSneh" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">#F48FB1</item>
-        <item name="colorPrimaryVariant">#F06292</item>
+    <!-- Base application theme. -->
+    <style name="Theme.ShishuSneh" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#F06292</item>
         <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorPrimaryContainer">#FCE4EC</item>
+        <item name="colorOnPrimaryContainer">#880E4F</item>
+
+        <!-- Secondary brand color. -->
         <item name="colorSecondary">#A5D6A7</item>
         <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorSecondaryContainer">#E8F5E9</item>
+        <item name="colorOnSecondaryContainer">#1B5E20</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">#F06292</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="CircleImage" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearance.ShishuSneh.MediumComponent" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">16dp</item>
     </style>
 </resources>
