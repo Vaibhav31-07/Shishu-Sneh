@@ -82,7 +82,7 @@ com.example.shishusneh/
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/ShishuSneh.git
+   git clone https://github.com/Vaibhav31-07/ShishuSneh.git
    ```
 2. **Setup API Key (Security Best Practice)**:
    - Generate a key at [Google AI Studio](https://aistudio.google.com/).
